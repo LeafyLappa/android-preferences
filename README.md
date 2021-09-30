@@ -27,7 +27,7 @@ class SyncPreferences(context: Context) : Preferences(context) {
 Preferences are accessible as instance properties:
 
 ```kotlin
-syncPreferences.syncEnabled = false
+syncPreferences.enableSync = false
 ```
 
 ## With preference key
