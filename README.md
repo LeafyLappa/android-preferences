@@ -45,9 +45,9 @@ class AppearancePreferences(context: Context) : Preferences(context) {
 Usage:
 
 ```kotlin
-    with (appearancePreferences.fontSize) {
-        findPreference<Preference?>(key!!)?.apply {
-            summary = data.toString()
-        }
+with (appearancePreferences.fontSize) {
+    findPreference<Preference?>(key!!)?.apply {
+        summary = data.toString()
     }
- ```
+}
+```
