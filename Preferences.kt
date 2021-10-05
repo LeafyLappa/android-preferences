@@ -27,7 +27,7 @@ abstract class Preferences(context: Context, name: String? = null) {
         var data by delegate
     }
 
-    interface OnChangeListener {
+    fun interface OnChangeListener {
         fun onSharedPreferenceChanged(property: KProperty<*>)
     }
 
