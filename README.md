@@ -1,3 +1,5 @@
+Seamless and Kotlin-idiomatic SharedPreferences access - now works with enums!
+
 This repo is inspired by and based on [this gist](https://gist.github.com/davidwhitman/b83e1744e8435a2c8cba262c1179f1a8).
 
 # Usage
