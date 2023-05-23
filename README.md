@@ -16,7 +16,7 @@ Declare preferences using the available delegates:
 
 ## Seamless preference access
 
-Use delegates directly:
+Group preferences together:
 
 ```kotlin
 class SyncPreferences(context: Context) : Preferences(context) {
