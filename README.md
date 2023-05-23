@@ -1,20 +1,22 @@
+Seamless and Kotlin-idiomatic SharedPreferences access - now works with enums!
+
 This repo is inspired by and based on [this gist](https://gist.github.com/davidwhitman/b83e1744e8435a2c8cba262c1179f1a8).
 
 # Usage
 
 Declare preferences using the available delegates:
+- stringNullablePreference
 - stringPreference
 - intPreference
 - floatPreference
 - booleanPreference
 - longPreference
 - stringSetPreference
-
-Depending on whether you want to store the preference key you can do it in two ways.
+- enumPreference
 
 ## Seamless preference access
 
-Use delegates directly:
+Group preferences together:
 
 ```kotlin
 class SyncPreferences(context: Context) : Preferences(context) {
@@ -22,32 +24,15 @@ class SyncPreferences(context: Context) : Preferences(context) {
     val syncOnWifiOnly by booleanPreference(defaultValue = true)
     val showSyncNotification by booleanPreference(defaultValue = true)
 }
+
+class ThemePreferences(context: Context) : Preferences(context) {
+    val appIcon by enumPreference(defaultValue = AppIcons.DEFAULT)
+}
 ```
 
 Preferences are accessible as instance properties:
 
 ```kotlin
 syncPreferences.enableSync = false
-```
-
-## With preference key
-
-Instantiate Preference data class passing a delegate:
-
-```kotlin
-class AppearancePreferences(context: Context) : Preferences(context) {
-    val fullscreen = Preference(booleanPreference(context.getString(R.string.pref_key_fullscreen)))
-    val enableDarkTheme = Preference(booleanPreference(context.getString(R.string.pref_key_enable_dark_theme)))
-    val fontSize = Preference(intPreference(context.getString(R.string.pref_key_font_size), 14))
-}
-```
-
-Usage:
-
-```kotlin
-with (appearancePreferences.fontSize) {
-    findPreference<Preference?>(key!!)?.apply {
-        summary = data.toString()
-    }
-}
+themePreferences.appIcon = AppIcons.VINTAGE
 ```
